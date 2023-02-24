@@ -1,11 +1,16 @@
-import { cleanEnv, url } from "envalid";
-import dotenv from "dotenv";
+const { cleanEnv, num, url } = require("envalid");
+const dotenv = require("dotenv");
 
 dotenv.config({
   path: ".env.local",
 });
 dotenv.config();
 
-export const env = cleanEnv(process.env, {
+const env = cleanEnv(process.env, {
   SERVER_CHANGELOG_URL: url(),
+  SERVER_PORT: num(),
 });
+
+module.exports = {
+  env,
+};
